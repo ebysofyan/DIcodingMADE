@@ -11,7 +11,7 @@ import kotlinx.android.synthetic.main.movie_list_item.view.*
 /**
  * Created by @ebysofyan on 7/2/19
  */
-class MovieListRecyclerViewAdapter(
+class ListRecyclerViewAdapter(
     private val onClickListener: (View, Movie, Int) -> Unit
 ) : BaseRecyclerViewAdapter<Movie>() {
     override fun getLayoutResourceId(): Int = R.layout.movie_list_item

@@ -1,4 +1,4 @@
-package ebysofyan.app.made.submission.views.list
+package ebysofyan.app.made.submission.views.list.movie
 
 import ebysofyan.app.made.submission.base.BasePresenter
 import ebysofyan.app.made.submission.data.Movie

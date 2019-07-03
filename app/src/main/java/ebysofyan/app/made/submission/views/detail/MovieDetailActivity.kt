@@ -9,6 +9,7 @@ import android.os.Bundle
 import android.view.View
 import android.view.WindowManager
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import ebysofyan.app.made.submission.R
 import ebysofyan.app.made.submission.common.extensions.loadWithGlidePlaceholder
 import ebysofyan.app.made.submission.common.extensions.toDateFormat
@@ -16,6 +17,7 @@ import ebysofyan.app.made.submission.common.extensions.toast
 import ebysofyan.app.made.submission.common.utils.Constants
 import ebysofyan.app.made.submission.data.Movie
 import kotlinx.android.synthetic.main.activity_movie_detail.*
+import kotlinx.android.synthetic.main.toolbar.*
 
 
 /**
@@ -29,6 +31,20 @@ class MovieDetailActivity : AppCompatActivity() {
 
         setContentView(R.layout.activity_movie_detail)
         setData()
+
+        initActionBar()
+    }
+
+    private fun initActionBar() {
+        setSupportActionBar(_toolbar)
+        supportActionBar?.apply {
+            title = ""
+            setDisplayHomeAsUpEnabled(true)
+        }
+        _toolbar.setBackgroundColor(ContextCompat.getColor(this, android.R.color.transparent))
+        _toolbar.setNavigationOnClickListener {
+            supportFinishAfterTransition()
+        }
     }
 
     private fun setRequestWindowFeature() {
