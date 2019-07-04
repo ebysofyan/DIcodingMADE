@@ -1,45 +1,51 @@
 package ebysofyan.app.made.submission.views.list.tv
 
 import android.content.Context
-import ebysofyan.app.made.submission.R
-import ebysofyan.app.made.submission.data.Movie
+import ebysofyan.app.made.submission.base.BaseRetrofitCallback
+import ebysofyan.app.made.submission.common.extensions.forceLocale2to1
+import ebysofyan.app.made.submission.common.extensions.toast
+import ebysofyan.app.made.submission.data.BaseResponse
+import ebysofyan.app.made.submission.data.MovieError
+import ebysofyan.app.made.submission.data.TvShow
+import ebysofyan.app.made.submission.repository.MovieRepository
+import retrofit2.Call
 
 /**
  * Created by @ebysofyan on 7/2/19
  */
-class TvShowListPresenter(private val context: Context) : TvShowListContract.Presenter {
+class TvShowListPresenter(private val context: Context?, private val repository: MovieRepository) :
+    TvShowListContract.Presenter {
     private var view: TvShowListContract.View? = null
+    private var service: Call<BaseResponse<TvShow>>? = null
 
     override fun attach(v: TvShowListContract.View) {
         this.view = v
     }
 
-    override fun detach() {
-        this.view = null
+    override fun fetchTvShows() {
+        view?.onLoading(true)
+
+        val queryMap = hashMapOf("language" to context?.forceLocale2to1().toString())
+        service = repository.fetchTvShow(queryMap, object : BaseRetrofitCallback<BaseResponse<TvShow>> {
+            override fun onFailure(t: Throwable) {
+                view?.onLoading(false)
+                context?.toast(t.localizedMessage)
+            }
+
+            override fun onResponseSuccess(data: BaseResponse<TvShow>?) {
+                view?.onLoading(false)
+                view?.onTvShowLoaded(data)
+            }
+
+            override fun onResponseError(httpStatusCode: Int, error: MovieError?) {
+                view?.onLoading(false)
+                context?.toast(error?.statusMessage.toString())
+            }
+        })
     }
 
-    override fun fetchTvShows() {
-        val movies = mutableListOf<Movie>()
-
-        val titles = context.resources.getStringArray(R.array.tv_show_titles)
-        val releaseDates = context.resources.getStringArray(R.array.tv_show_release_dates)
-        val descriptions = context.resources.getStringArray(R.array.tv_show_descriptions)
-        val posters = context.resources.obtainTypedArray(R.array.tv_show_posters)
-        val ratings = context.resources.getStringArray(R.array.tv_show_ratings)
-        val trailers = context.resources.getStringArray(R.array.tv_show_trailers)
-
-        repeat(titles.size) { i ->
-            val movie = Movie(
-                titles[i],
-                releaseDates[i],
-                descriptions[i],
-                posters.getResourceId(i, -1),
-                ratings[i],
-                trailers[i]
-            )
-            movies.add(movie)
-        }
-
-        view?.onTvShowLoaded(movies)
+    override fun detach() {
+        this.view = null
+        service?.cancel()
     }
 }

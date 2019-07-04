@@ -1,5 +1,6 @@
 package ebysofyan.app.made.submission.views
 
+import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import android.provider.Settings.ACTION_LOCALE_SETTINGS
@@ -20,6 +21,7 @@ import kotlinx.android.synthetic.main.toolbar.*
 class MainActivity : AppCompatActivity() {
 
     private lateinit var tabsAdapter: TabsViewpagerAdapter
+    private val LOCALE_SETTINGS_CODE = 201
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -54,8 +56,23 @@ class MainActivity : AppCompatActivity() {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         if (item.itemId == R.id.menu_item_language) {
-            startActivity(Intent(ACTION_LOCALE_SETTINGS))
+            startActivityForResult(Intent(ACTION_LOCALE_SETTINGS), LOCALE_SETTINGS_CODE)
         }
         return super.onOptionsItemSelected(item)
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (requestCode == LOCALE_SETTINGS_CODE && resultCode == Activity.RESULT_OK) {
+            when (val activeFragment = tabsAdapter.getItem(main_viewpager.currentItem)) {
+                is MovieListFragment -> {
+                    activeFragment.refreshItem()
+                }
+
+                is TvShowListFragment -> {
+                    activeFragment.refreshItem()
+                }
+            }
+        }
     }
 }

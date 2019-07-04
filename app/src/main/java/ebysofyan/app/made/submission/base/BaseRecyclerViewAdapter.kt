@@ -28,6 +28,8 @@ abstract class BaseRecyclerViewAdapter<T> : RecyclerView.Adapter<BaseViewHolder>
         notifyDataSetChanged()
     }
 
+    fun getItems() = getListData()
+
     fun removeItem(exsT: T) {
         getListData().remove(exsT)
         notifyDataSetChanged()

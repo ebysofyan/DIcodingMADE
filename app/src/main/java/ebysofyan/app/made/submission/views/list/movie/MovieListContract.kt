@@ -1,6 +1,7 @@
 package ebysofyan.app.made.submission.views.list.movie
 
 import ebysofyan.app.made.submission.base.BasePresenter
+import ebysofyan.app.made.submission.data.BaseResponse
 import ebysofyan.app.made.submission.data.Movie
 
 /**
@@ -8,7 +9,8 @@ import ebysofyan.app.made.submission.data.Movie
  */
 interface MovieListContract {
     interface View {
-        fun onMoviesLoaded(movies: MutableList<Movie>)
+        fun onLoading(show: Boolean)
+        fun onMoviesLoaded(movie: BaseResponse<Movie>?)
     }
 
     interface Presenter : BasePresenter<View> {

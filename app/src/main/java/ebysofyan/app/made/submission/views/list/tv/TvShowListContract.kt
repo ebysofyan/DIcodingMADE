@@ -1,14 +1,16 @@
 package ebysofyan.app.made.submission.views.list.tv
 
 import ebysofyan.app.made.submission.base.BasePresenter
-import ebysofyan.app.made.submission.data.Movie
+import ebysofyan.app.made.submission.data.BaseResponse
+import ebysofyan.app.made.submission.data.TvShow
 
 /**
  * Created by @ebysofyan on 7/2/19
  */
 interface TvShowListContract {
     interface View {
-        fun onTvShowLoaded(movies: MutableList<Movie>)
+        fun onLoading(show: Boolean)
+        fun onTvShowLoaded(tvShow: BaseResponse<TvShow>?)
     }
 
     interface Presenter : BasePresenter<View> {

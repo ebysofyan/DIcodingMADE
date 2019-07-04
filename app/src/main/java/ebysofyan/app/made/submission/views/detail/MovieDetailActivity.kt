@@ -1,11 +1,9 @@
 package ebysofyan.app.made.submission.views.detail
 
-import android.content.ActivityNotFoundException
-import android.content.Intent
 import android.graphics.Color
-import android.net.Uri
 import android.os.Build
 import android.os.Bundle
+import android.os.Parcelable
 import android.view.View
 import android.view.WindowManager
 import androidx.appcompat.app.AppCompatActivity
@@ -16,6 +14,7 @@ import ebysofyan.app.made.submission.common.extensions.toDateFormat
 import ebysofyan.app.made.submission.common.extensions.toast
 import ebysofyan.app.made.submission.common.utils.Constants
 import ebysofyan.app.made.submission.data.Movie
+import ebysofyan.app.made.submission.data.TvShow
 import kotlinx.android.synthetic.main.activity_movie_detail.*
 import kotlinx.android.synthetic.main.toolbar.*
 
@@ -24,7 +23,7 @@ import kotlinx.android.synthetic.main.toolbar.*
  * Created by @ebysofyan on 7/2/19
  */
 class MovieDetailActivity : AppCompatActivity() {
-    private lateinit var movie: Movie
+    private lateinit var parcelable: Parcelable
     override fun onCreate(savedInstanceState: Bundle?) {
         setRequestWindowFeature()
         super.onCreate(savedInstanceState)
@@ -73,25 +72,52 @@ class MovieDetailActivity : AppCompatActivity() {
     }
 
     private fun setData() {
-        movie = intent.getParcelableExtra(Constants.MOVIE_OBJ)
-        movie_detail_header.loadWithGlidePlaceholder(movie.poster)
-        movie_detail_poster.loadWithGlidePlaceholder(movie.poster)
+        parcelable = intent.getParcelableExtra(Constants.PARCELABLE_OBJ)
+
+        when (parcelable) {
+            is Movie -> {
+                setDetailAsMovie(parcelable as Movie)
+            }
+            is TvShow -> {
+                setDetailAsTvShow(parcelable as TvShow)
+            }
+        }
+    }
+
+    private fun setDetailAsMovie(movie: Movie) {
+        movie_detail_header.loadWithGlidePlaceholder(Constants.getImageUrl("w780", movie.backdropPath))
+        movie_detail_poster.loadWithGlidePlaceholder(Constants.getImageUrl(fileName = movie.posterPath))
 
         movie_detail_title.text = movie.title
-        movie_detail_rating.text = movie.rating
-        movie_detail_release_date.text = movie.releaseDate.toDateFormat("MMMM dd, yyyy")
-        movie_detail_desc.text = movie.description
+        movie_detail_rating.text = movie.voteAverage.toString()
+        movie_detail_release_date.text = movie.releaseDate.toDateFormat()
+        movie_detail_desc.text = movie.overview
 
         movie_detail_trailer.setOnClickListener {
-            val webIntent = Intent(
-                Intent.ACTION_VIEW,
-                Uri.parse(movie.trailer)
-            ).apply { putExtra("force_fullscreen", true) }
-            try {
-                startActivity(webIntent)
-            } catch (ex: ActivityNotFoundException) {
-                toast("Youtube player not found!")
-            }
+            toast(getString(R.string.no_trailer_found))
+        }
+    }
+
+    private fun setDetailAsTvShow(tvShow: TvShow) {
+        movie_detail_header.loadWithGlidePlaceholder(Constants.getImageUrl("w780", tvShow.backdropPath))
+        movie_detail_poster.loadWithGlidePlaceholder(Constants.getImageUrl(fileName = tvShow.posterPath))
+
+        movie_detail_title.text = tvShow.name
+        movie_detail_rating.text = tvShow.voteAverage.toString()
+        movie_detail_release_date.text = tvShow.firstAirDate.toDateFormat()
+        movie_detail_desc.text = tvShow.overview
+
+        movie_detail_trailer.setOnClickListener {
+            //            val webIntent = Intent(
+//                Intent.ACTION_VIEW,
+//                Uri.parse(movie.trailer)
+//            ).apply { putExtra("force_fullscreen", true) }
+//            try {
+//                startActivity(webIntent)
+//            } catch (ex: ActivityNotFoundException) {
+//                toast("Youtube player not found!")
+//            }
+            toast(getString(R.string.no_trailer_found))
         }
     }
 }
