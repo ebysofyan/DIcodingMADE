@@ -3,5 +3,7 @@
     <string name="movie_image_content_desc">Movie Poster</string>
     <string name="menu_language">Change Language</string>
     <string name="no_trailer_found">No trailer found</string>
+    <string name="tab_movies_title">Movies</string>
+    <string name="tab_tv_show_title">TV Show</string>
 
 </resources>

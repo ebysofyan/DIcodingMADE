@@ -42,8 +42,8 @@ class MainActivity : AppCompatActivity() {
     private fun setupViewPager() {
         tabsAdapter = TabsViewpagerAdapter(supportFragmentManager)
 
-        tabsAdapter.fragments.add(MovieListFragment() to "Movies")
-        tabsAdapter.fragments.add(TvShowListFragment() to "TV Show")
+        tabsAdapter.fragments.add(MovieListFragment() to getString(R.string.tab_movies_title))
+        tabsAdapter.fragments.add(TvShowListFragment() to getString(R.string.tab_tv_show_title))
 
         main_viewpager.adapter = tabsAdapter
         main_tabs.setupWithViewPager(main_viewpager)

@@ -1,8 +1,10 @@
 package ebysofyan.app.made.submission.common.utils
 
+import ebysofyan.app.made.submission.BuildConfig
+
 object Constants {
 
-    const val API_KEY = "27d588f44884cfc30f97f76d26d9a55a"
+    const val API_KEY = BuildConfig.TMDB_API_KEY
 
     const val TV_SHOWS = "TV_SHOWS"
     const val MOVIES = "MOVIES"

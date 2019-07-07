@@ -15,7 +15,7 @@ object NetworkConfig {
         .readTimeout(120, TimeUnit.SECONDS)
         .build()
 
-    const val BASE_URL = "https://api.themoviedb.org"
+    private const val BASE_URL = "https://api.themoviedb.org"
 
     val client: Retrofit = Retrofit.Builder()
         .baseUrl(BASE_URL)
