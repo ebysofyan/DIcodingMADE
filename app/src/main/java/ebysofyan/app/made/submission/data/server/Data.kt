@@ -1,4 +1,4 @@
-package ebysofyan.app.made.submission.data
+package ebysofyan.app.made.submission.data.server
 
 import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
@@ -21,7 +21,7 @@ data class BaseResponse<T : Parcelable>(
 
 @Parcelize
 data class Movie(
-    val id: Int,
+    val id: Long,
     val adult: Boolean,
     @SerializedName("backdrop_path")
     val backdropPath: String,
@@ -48,7 +48,7 @@ data class Movie(
 
 @Parcelize
 data class TvShow(
-    val id: Int,
+    val id: Long,
     val name: String,
     @SerializedName("backdrop_path")
     val backdropPath: String,
@@ -71,6 +71,8 @@ data class TvShow(
     @SerializedName("vote_count")
     val voteCount: Int
 ) : Parcelable
+
+
 
 data class MovieError(
     @SerializedName("status_code")

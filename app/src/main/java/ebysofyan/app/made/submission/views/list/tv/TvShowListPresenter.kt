@@ -4,9 +4,9 @@ import android.content.Context
 import ebysofyan.app.made.submission.base.BaseRetrofitCallback
 import ebysofyan.app.made.submission.common.extensions.forceLocale2to1
 import ebysofyan.app.made.submission.common.extensions.toast
-import ebysofyan.app.made.submission.data.BaseResponse
-import ebysofyan.app.made.submission.data.MovieError
-import ebysofyan.app.made.submission.data.TvShow
+import ebysofyan.app.made.submission.data.server.BaseResponse
+import ebysofyan.app.made.submission.data.server.MovieError
+import ebysofyan.app.made.submission.data.server.TvShow
 import ebysofyan.app.made.submission.repository.MovieRepository
 import retrofit2.Call
 

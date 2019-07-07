@@ -1,0 +1,120 @@
+{
+  "_note1": "KEEP THIS FILE! Check it into a version control system (VCS) like git.",
+  "_note2": "ObjectBox manages crucial IDs for your object model. See docs for details.",
+  "_note3": "If you have VCS merge conflicts, you must resolve them according to ObjectBox docs.",
+  "entities": [
+    {
+      "id": "3:627598967633944645",
+      "lastPropertyId": "18:381161374668364129",
+      "name": "Favorite",
+      "properties": [
+        {
+          "id": "1:7315186206590522077",
+          "name": "id"
+        },
+        {
+          "id": "2:2118268730357802970",
+          "name": "adult"
+        },
+        {
+          "id": "3:3314474886875644962",
+          "name": "backdropPath"
+        },
+        {
+          "id": "4:5215287673986742194",
+          "name": "originalLanguage"
+        },
+        {
+          "id": "5:8737812242943073665",
+          "name": "originalTitle"
+        },
+        {
+          "id": "6:2416374789040495751",
+          "name": "overview"
+        },
+        {
+          "id": "7:6883191676452006068",
+          "name": "popularity"
+        },
+        {
+          "id": "8:7639611511266557219",
+          "name": "posterPath"
+        },
+        {
+          "id": "9:5204998108824708899",
+          "name": "releaseDate"
+        },
+        {
+          "id": "10:1601556016211897482",
+          "name": "title"
+        },
+        {
+          "id": "11:6103964595960287749",
+          "name": "video"
+        },
+        {
+          "id": "12:3838653463577202720",
+          "name": "voteAverage"
+        },
+        {
+          "id": "13:7008056203411548784",
+          "name": "voteCount"
+        },
+        {
+          "id": "16:4829932721960581121",
+          "name": "originalName"
+        },
+        {
+          "id": "17:3877414840887001386",
+          "name": "type"
+        },
+        {
+          "id": "18:381161374668364129",
+          "name": "movieId"
+        }
+      ],
+      "relations": []
+    }
+  ],
+  "lastEntityId": "3:627598967633944645",
+  "lastIndexId": "0:0",
+  "lastRelationId": "0:0",
+  "lastSequenceId": "0:0",
+  "modelVersion": 4,
+  "modelVersionParserMinimum": 4,
+  "retiredEntityUids": [
+    8372957102809521074,
+    8367978125326136934
+  ],
+  "retiredIndexUids": [],
+  "retiredPropertyUids": [
+    7243320350934072698,
+    6050068566616569753,
+    4741104753457030325,
+    5580664523285885060,
+    6193681636504586979,
+    4628355398347309531,
+    4707731875324956417,
+    8938488413505247918,
+    7701476844981543051,
+    3539840881124037509,
+    6227551151043107117,
+    1864518699146432000,
+    7790347011198072724,
+    1477269743433585898,
+    8210073840442691243,
+    1817035956835841749,
+    5177482541613635876,
+    8380959437661459344,
+    7913845363247159710,
+    1806337998391100397,
+    5098296995163666421,
+    215580222936494709,
+    6021647598638033398,
+    4477472143821577823,
+    7222017557648822921,
+    2799024617853803037
+  ],
+  "retiredRelationUids": [],
+  "version": 1
+}

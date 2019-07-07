@@ -1,6 +1,6 @@
 package ebysofyan.app.made.submission.base
 
-import ebysofyan.app.made.submission.data.MovieError
+import ebysofyan.app.made.submission.data.server.MovieError
 
 /**
  * Created by @ebysofyan on 7/4/19

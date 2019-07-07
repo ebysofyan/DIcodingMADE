@@ -1,9 +1,12 @@
 package ebysofyan.app.made.submission.views.detail
 
+import android.app.Activity
+import android.content.Intent
 import android.graphics.Color
 import android.os.Build
 import android.os.Bundle
 import android.os.Parcelable
+import android.util.Log
 import android.view.View
 import android.view.WindowManager
 import androidx.appcompat.app.AppCompatActivity
@@ -13,8 +16,10 @@ import ebysofyan.app.made.submission.common.extensions.loadWithGlidePlaceholder
 import ebysofyan.app.made.submission.common.extensions.toDateFormat
 import ebysofyan.app.made.submission.common.extensions.toast
 import ebysofyan.app.made.submission.common.utils.Constants
-import ebysofyan.app.made.submission.data.Movie
-import ebysofyan.app.made.submission.data.TvShow
+import ebysofyan.app.made.submission.dao.FavoriteDao
+import ebysofyan.app.made.submission.data.local.Favorite
+import ebysofyan.app.made.submission.data.server.Movie
+import ebysofyan.app.made.submission.data.server.TvShow
 import kotlinx.android.synthetic.main.activity_movie_detail.*
 import kotlinx.android.synthetic.main.toolbar.*
 
@@ -24,6 +29,10 @@ import kotlinx.android.synthetic.main.toolbar.*
  */
 class MovieDetailActivity : AppCompatActivity() {
     private lateinit var parcelable: Parcelable
+    private lateinit var favoriteType: String
+
+    private var hasChange: Boolean = false
+
     override fun onCreate(savedInstanceState: Bundle?) {
         setRequestWindowFeature()
         super.onCreate(savedInstanceState)
@@ -42,8 +51,13 @@ class MovieDetailActivity : AppCompatActivity() {
         }
         _toolbar.setBackgroundColor(ContextCompat.getColor(this, android.R.color.transparent))
         _toolbar.setNavigationOnClickListener {
-            supportFinishAfterTransition()
+            navigateUp()
         }
+    }
+
+    private fun navigateUp() {
+        if (hasChange) setResult(Activity.RESULT_OK, Intent())
+        supportFinishAfterTransition()
     }
 
     private fun setRequestWindowFeature() {
@@ -76,12 +90,26 @@ class MovieDetailActivity : AppCompatActivity() {
 
         when (parcelable) {
             is Movie -> {
-                setDetailAsMovie(parcelable as Movie)
+                val movie = parcelable as Movie
+                setDetailAsMovie(movie)
+                setFavoriteIcon(movie.id)
             }
             is TvShow -> {
-                setDetailAsTvShow(parcelable as TvShow)
+                val tvShow = parcelable as TvShow
+                setDetailAsTvShow(tvShow)
+                setFavoriteIcon(tvShow.id)
+            }
+            is Favorite -> {
+                val favorite = parcelable as Favorite
+                setDetailAsFavorite(favorite)
+                setFavoriteIcon(favorite.movieId)
             }
         }
+    }
+
+    private fun setFavoriteIcon(id: Long) {
+        if (FavoriteDao.isExist(id)) movie_detail_favorite.setImageResource(R.drawable.ic_heart_white_18dp)
+        else movie_detail_favorite.setImageResource(R.drawable.ic_heart_outline_white_18dp)
     }
 
     private fun setDetailAsMovie(movie: Movie) {
@@ -93,8 +121,32 @@ class MovieDetailActivity : AppCompatActivity() {
         movie_detail_release_date.text = movie.releaseDate.toDateFormat()
         movie_detail_desc.text = movie.overview
 
-        movie_detail_trailer.setOnClickListener {
-            toast(getString(R.string.no_trailer_found))
+        movie_detail_favorite.setOnClickListener {
+            if (FavoriteDao.isExist(movie.id)) {
+                Log.e("FavoriteDao.isExist", "true")
+                FavoriteDao.deleteFromFavorite(movie.id) {
+                    setFavoriteIcon(movie.id)
+                    toast(getString(R.string.delete_from_favorite_message))
+                }
+            } else {
+                Log.e("FavoriteDao.isExist", "false")
+                val favorite = Favorite(
+                    movieId = movie.id,
+                    backdropPath = movie.backdropPath,
+                    posterPath = movie.posterPath,
+                    title = movie.title,
+                    voteAverage = movie.voteAverage,
+                    releaseDate = movie.releaseDate,
+                    overview = movie.overview,
+                    type = "movie"
+                )
+                FavoriteDao.addToFavorite(favorite) {
+                    setFavoriteIcon(movie.id)
+                    toast(getString(R.string.add_to_favorite_message))
+                }
+            }
+
+            hasChange = true
         }
     }
 
@@ -107,17 +159,71 @@ class MovieDetailActivity : AppCompatActivity() {
         movie_detail_release_date.text = tvShow.firstAirDate.toDateFormat()
         movie_detail_desc.text = tvShow.overview
 
-        movie_detail_trailer.setOnClickListener {
-            //            val webIntent = Intent(
-//                Intent.ACTION_VIEW,
-//                Uri.parse(movie.trailer)
-//            ).apply { putExtra("force_fullscreen", true) }
-//            try {
-//                startActivity(webIntent)
-//            } catch (ex: ActivityNotFoundException) {
-//                toast("Youtube player not found!")
-//            }
-            toast(getString(R.string.no_trailer_found))
+        movie_detail_favorite.setOnClickListener {
+            if (FavoriteDao.isExist(tvShow.id)) {
+                FavoriteDao.deleteFromFavorite(tvShow.id) {
+                    setFavoriteIcon(tvShow.id)
+                    toast(getString(R.string.delete_from_favorite_message))
+                }
+            } else {
+                val favorite = Favorite(
+                    movieId = tvShow.id,
+                    backdropPath = tvShow.backdropPath,
+                    posterPath = tvShow.posterPath,
+                    title = tvShow.name,
+                    voteAverage = tvShow.voteAverage,
+                    releaseDate = tvShow.firstAirDate,
+                    overview = tvShow.overview,
+                    type = "tv-show"
+                )
+                FavoriteDao.addToFavorite(favorite) {
+                    setFavoriteIcon(tvShow.id)
+                    toast(getString(R.string.add_to_favorite_message))
+                }
+            }
+
+            hasChange = true
         }
+    }
+
+    private fun setDetailAsFavorite(fav: Favorite) {
+        movie_detail_header.loadWithGlidePlaceholder(Constants.getImageUrl("w780", fav.backdropPath))
+        movie_detail_poster.loadWithGlidePlaceholder(Constants.getImageUrl(fileName = fav.posterPath))
+
+        movie_detail_title.text = fav.releaseDate
+        movie_detail_rating.text = fav.voteAverage.toString()
+        movie_detail_release_date.text = fav.releaseDate.toDateFormat()
+        movie_detail_desc.text = fav.overview
+
+        favoriteType = fav.type
+        movie_detail_favorite.setOnClickListener {
+            if (FavoriteDao.isExist(fav.movieId)) {
+                FavoriteDao.deleteFromFavorite(fav.movieId) {
+                    setFavoriteIcon(fav.movieId)
+                    toast(getString(R.string.delete_from_favorite_message))
+                }
+            } else {
+                val favorite = Favorite(
+                    movieId = fav.id,
+                    backdropPath = fav.backdropPath,
+                    posterPath = fav.posterPath,
+                    title = fav.title,
+                    voteAverage = fav.voteAverage,
+                    releaseDate = fav.releaseDate,
+                    overview = fav.overview,
+                    type = favoriteType
+                )
+                FavoriteDao.addToFavorite(favorite) {
+                    setFavoriteIcon(fav.movieId)
+                    toast(getString(R.string.add_to_favorite_message))
+                }
+            }
+
+            hasChange = true
+        }
+    }
+
+    override fun onBackPressed() {
+        navigateUp()
     }
 }

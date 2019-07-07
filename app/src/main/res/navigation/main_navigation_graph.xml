@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/main_navigation_graph"
+            app:startDestination="@id/movie_menu_item">
+
+    <fragment android:id="@+id/movie_menu_item"
+              android:name="ebysofyan.app.made.submission.views.list.movie.MovieListFragment"
+              android:label="@string/tab_movies_title"/>
+    <fragment android:id="@+id/tv_show_menu_item"
+              android:name="ebysofyan.app.made.submission.views.list.tv.TvShowListFragment"
+              android:label="@string/tab_tv_show_title"/>
+    <fragment android:id="@+id/favorite_menu_item"
+              android:name="ebysofyan.app.made.submission.views.list.favorite.FavoriteFragment"
+              android:label="@string/tab_favorite_title"/>
+</navigation>

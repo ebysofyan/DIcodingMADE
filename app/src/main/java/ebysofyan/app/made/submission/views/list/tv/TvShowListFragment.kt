@@ -6,15 +6,17 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.app.ActivityOptionsCompat
+import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
 import ebysofyan.app.made.submission.R
 import ebysofyan.app.made.submission.common.utils.Constants
-import ebysofyan.app.made.submission.data.BaseResponse
-import ebysofyan.app.made.submission.data.TvShow
+import ebysofyan.app.made.submission.data.server.BaseResponse
+import ebysofyan.app.made.submission.data.server.TvShow
 import ebysofyan.app.made.submission.repository.MovieRepository
+import ebysofyan.app.made.submission.views.MainActivity
 import ebysofyan.app.made.submission.views.detail.MovieDetailActivity
-import kotlinx.android.synthetic.main.activity_movie_list.*
+import kotlinx.android.synthetic.main.fragment_movie_list.*
 import kotlinx.android.synthetic.main.movie_list_item.view.*
 import java.util.*
 
@@ -24,7 +26,7 @@ class TvShowListFragment : Fragment(), TvShowListContract.View {
     private lateinit var presenter: TvShowListContract.Presenter
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        return inflater.inflate(R.layout.activity_movie_list, container, false)
+        return inflater.inflate(R.layout.fragment_movie_list, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -52,16 +54,13 @@ class TvShowListFragment : Fragment(), TvShowListContract.View {
     private fun initRecyclerView() {
         adapter = TvShowRecyclerViewAdapter { view, movie, _ ->
             val intent = Intent(context, MovieDetailActivity::class.java)
-            val bundle = Bundle().apply {
-                putParcelable(Constants.PARCELABLE_OBJ, movie)
-            }
-            intent.putExtras(bundle)
+            intent.putExtras(bundleOf(Constants.PARCELABLE_OBJ to movie))
             val options = ActivityOptionsCompat.makeSceneTransitionAnimation(
                 activity!!,
                 view.movie_item_image,
                 "image_poster"
             )
-            startActivity(intent, options.toBundle())
+            startActivityForResult(intent, MainActivity.LIST_CHANGE_CODE, options.toBundle())
         }
         movie_recycler_view.layoutManager = GridLayoutManager(context, 3)
         movie_recycler_view.setHasFixedSize(true)

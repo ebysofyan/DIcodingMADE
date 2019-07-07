@@ -3,10 +3,10 @@ package ebysofyan.app.made.submission.repository
 import ebysofyan.app.made.submission.base.BaseRetrofitCallback
 import ebysofyan.app.made.submission.common.utils.ErrorBodyParser
 import ebysofyan.app.made.submission.common.utils.NetworkConfig
-import ebysofyan.app.made.submission.data.BaseResponse
-import ebysofyan.app.made.submission.data.Movie
-import ebysofyan.app.made.submission.data.MovieError
-import ebysofyan.app.made.submission.data.TvShow
+import ebysofyan.app.made.submission.data.server.BaseResponse
+import ebysofyan.app.made.submission.data.server.Movie
+import ebysofyan.app.made.submission.data.server.MovieError
+import ebysofyan.app.made.submission.data.server.TvShow
 import ebysofyan.app.made.submission.repository.services.MovieService
 import retrofit2.Call
 import retrofit2.Callback

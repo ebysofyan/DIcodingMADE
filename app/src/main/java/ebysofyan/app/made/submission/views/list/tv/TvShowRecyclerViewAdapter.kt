@@ -6,7 +6,7 @@ import ebysofyan.app.made.submission.base.BaseRecyclerViewAdapter
 import ebysofyan.app.made.submission.common.extensions.loadWithGlidePlaceholder
 import ebysofyan.app.made.submission.common.extensions.toDateFormat
 import ebysofyan.app.made.submission.common.utils.Constants
-import ebysofyan.app.made.submission.data.TvShow
+import ebysofyan.app.made.submission.data.server.TvShow
 import kotlinx.android.synthetic.main.movie_list_item.view.*
 
 /**
