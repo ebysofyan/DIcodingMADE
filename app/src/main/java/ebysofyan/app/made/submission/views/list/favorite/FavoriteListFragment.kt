@@ -22,9 +22,9 @@ class FavoriteListFragment : Fragment() {
 
     companion object {
         fun getInstance(query: String): FavoriteListFragment {
-            val fragment = FavoriteListFragment()
-            fragment.arguments = bundleOf(Constants.MOVIE_TYPE to query)
-            return fragment
+            return FavoriteListFragment().apply {
+                arguments = bundleOf(Constants.MOVIE_TYPE to query)
+            }
         }
     }
 
