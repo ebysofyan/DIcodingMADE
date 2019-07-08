@@ -4,7 +4,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentPagerAdapter
 
-class TabsViewpagerAdapter(fm: FragmentManager) : FragmentPagerAdapter(fm) {
+class TabsViewpagerAdapter(fm: FragmentManager) : FragmentPagerAdapter(fm, BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT) {
     val fragments = mutableListOf<Pair<Fragment, String>>()
 
     override fun getItem(position: Int): Fragment = fragments[position].first
