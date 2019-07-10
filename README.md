@@ -1,5 +1,4 @@
-# Dicoding MADE's Submission
-
+## Dicoding MADE's Submission
 ### This just an step by step Dicoding MADE's Sumbimission
 
-Check branch for specific submission
+# Check branch for specific submission
