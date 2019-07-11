@@ -1,20 +1,21 @@
-### This just an step by step Dicoding MADE's Sumbimission
+## This just an step by step Dicoding MADE's Sumbimission
 ### Important : Check branch for specific submission
 ### Disclaimer : Make this repository as refference, don't become a cheater and plagiarism.
 
 
-### Purpose
+## Purpose
 This repository is intended to all of people who want to learn about Android programming, especially Dicoding's student.
 
 
-### Screenshoot
+## Screenshoot
+<p>
 <img align="left" width="auto" height="400" src="./1.jpg">
 <img align="left" width="auto" height="400" src="./2.jpg">
 <img align="left" width="auto" height="400" src="./3.jpg">
 <img align="left" width="auto" height="400" src="./4.jpg">
-<br>
+</p>
 
-### What about this repository?
+## What about this repository?
 Thsi repository contains all stage of Dicoding's submission
 - [x] Submission 1: Aplikasi Movie Catalogue
 - [x] Submission 2: Aplikasi Movie Catalogue (UI/UX)
@@ -22,7 +23,7 @@ Thsi repository contains all stage of Dicoding's submission
 - [x] Submission 4: Aplikasi Movie Catalogue (Local Storage)
 - [ ] Submission 5: Aplikasi Movie Catalogue (Extended)
 
-### Tech Stack
+## Tech Stack
 - [x] Kotlin
 - [x] MVP pattern approach
 - [x] Retrofit as Third Party API Call
@@ -31,7 +32,7 @@ Thsi repository contains all stage of Dicoding's submission
 - [x] Androidx Component
 - [x] Glide
 
-### Author
+## Author
 ###### Eby Sofyan
 
 #### Give ★ if it usefull
