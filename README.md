@@ -34,6 +34,6 @@ Thsi repository contains all stage of Dicoding's submission
 - [x] Shared-Element-Transition
 
 ## Author
-#### <a href="">Eby Sofyan</a>
+#### <a href="https://linkedin.com/in/ebysofyan">Eby Sofyan</a>
 
 #### Give ★ if it usefull
