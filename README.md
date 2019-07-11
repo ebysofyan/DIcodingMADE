@@ -1,10 +1,18 @@
-## This just an step by step Dicoding MADE's Sumbimission
-## Important : Check branch for specific submission
+### This just an step by step Dicoding MADE's Sumbimission
+### Important : Check branch for specific submission
+### Disclaimer : Make this repository as refference, don't become a cheater and plagiarism.
 
+
+### Purpose
 This repository is intended to all of people who want to learn about Android programming, especially Dicoding's student.
 
-## Disclaimer : Make this repository as refference, don't become a cheater and plagiarism.
 
+### Screenshoot
+<img align="left" width="auto" height="400" src="./1.jpg">
+<img align="left" width="auto" height="400" src="./2.jpg">
+<img align="left" width="auto" height="400" src="./3.jpg">
+<img align="left" width="auto" height="400" src="./4.jpg">
+<br>
 
 ### What about this repository?
 Thsi repository contains all stage of Dicoding's submission
@@ -24,6 +32,6 @@ Thsi repository contains all stage of Dicoding's submission
 - [x] Glide
 
 ### Author
-##### Eby Sofyan
+###### Eby Sofyan
 
-### Give ★ if it usefull
+#### Give ★ if it usefull
