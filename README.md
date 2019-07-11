@@ -8,11 +8,11 @@ This repository is intended to all of people who want to learn about Android pro
 
 
 ## Screenshoot
-<p>
-<img align="left" width="auto" height="400" src="./1.jpg">
-<img align="left" width="auto" height="400" src="./2.jpg">
-<img align="left" width="auto" height="400" src="./3.jpg">
-<img align="left" width="auto" height="400" src="./4.jpg">
+<p align="center">
+<img width="auto" height="400" src="./1.jpg">
+<img width="auto" height="400" src="./2.jpg">
+<img width="auto" height="400" src="./3.jpg">
+<img width="auto" height="400" src="./4.jpg">
 </p>
 
 ## What about this repository?
@@ -31,8 +31,9 @@ Thsi repository contains all stage of Dicoding's submission
 - [x] Androidx Navigation
 - [x] Androidx Component
 - [x] Glide
+- [x] Shared-Element-Transition
 
 ## Author
-###### Eby Sofyan
+#### <a href="">Eby Sofyan</a>
 
 #### Give ★ if it usefull
