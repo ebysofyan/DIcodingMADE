@@ -1,9 +1,9 @@
-# This just an step by step Dicoding MADE's Sumbimission
-# Important : Check branch for specific submission
+## This just an step by step Dicoding MADE's Sumbimission
+## Important : Check branch for specific submission
 
 This repository is intended to all of people who want to learn about Android programming, especially Dicoding's student.
 
-# Disclaimer : Make this repository as refference, don't become a cheater and plagiarism.
+## Disclaimer : Make this repository as refference, don't become a cheater and plagiarism.
 
 
 ### What about this repository?
