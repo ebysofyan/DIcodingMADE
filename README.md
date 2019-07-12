@@ -9,10 +9,11 @@ This repository is intended to all of people who want to learn about Android pro
 
 ## Screenshoot
 <p align="center">
-<img width="auto" height="400" src="./1.jpg">
-<img width="auto" height="400" src="./2.jpg">
-<img width="auto" height="400" src="./3.jpg">
-<img width="auto" height="400" src="./4.jpg">
+<img width="auto" height="350" src="./1.jpg">
+<img width="auto" height="350" src="./2.jpg">
+<img width="auto" height="350" src="./3.jpg">
+<img width="auto" height="350" src="./4.jpg">
+<img width="auto" height="350" src="./5.jpg">
 </p>
 
 ## What about this repository?
