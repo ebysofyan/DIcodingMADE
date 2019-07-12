@@ -1,4 +1,7 @@
 <resources>
+
+    <string name="default_font" translatable="false">sans-serif-light</string>
+
     <string name="app_name">MadeSubmission</string>
     <string name="movie_image_content_desc">Movie Poster</string>
     <string name="menu_language">Change Language</string>

@@ -2,6 +2,7 @@ package ebysofyan.app.made.submission.common.extensions
 
 import android.annotation.SuppressLint
 import android.content.Context
+import java.text.ParseException
 import java.text.SimpleDateFormat
 
 /**
@@ -10,8 +11,12 @@ import java.text.SimpleDateFormat
 
 @SuppressLint("SimpleDateFormat")
 fun String.toDateFormat(pattern: String = "MMMM dd, yyyy"): String {
-    val date = SimpleDateFormat("yyyy-MM-dd").parse(this)
-    return SimpleDateFormat(pattern).format(date)
+    return try {
+        val date = SimpleDateFormat("yyyy-MM-dd").parse(this)
+        SimpleDateFormat(pattern).format(date)
+    } catch (e: ParseException) {
+        "---- --, ---"
+    }
 }
 
 fun Context.forceLocale2to1() = if (resources?.configuration?.locale?.language.toString() == "in") "id"
