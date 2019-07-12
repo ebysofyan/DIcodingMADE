@@ -1,4 +1,4 @@
-## This just an step by step Dicoding MADE's Sumbimission
+## This is just an step by step Dicoding MADE's Sumbimission
 ### Important : Check branch for specific submission
 ### Disclaimer : Make this repository as refference, don't become a cheater and plagiarism.
 
