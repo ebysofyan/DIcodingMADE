@@ -12,5 +12,6 @@
 
     <string name="appwidget_text">Favorite Widget</string>
     <string name="empty_text_widget">No Favorite</string>
+    <string name="search_hint_text">Find movie and tv show . . .</string>
 
 </resources>

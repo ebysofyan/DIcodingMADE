@@ -35,8 +35,9 @@
             </intent-filter>
         </activity>
         <activity
-                android:name=".views.detail.MovieDetailActivity"
-                android:configChanges="orientation|screenSize"/>
+                android:name=".views.detail.MovieDetailActivity"/>
+        <activity
+                android:name=".views.search.MovieSearchActivity"/>
 
         <receiver android:name=".widget.FavoriteStackWidget">
             <intent-filter>

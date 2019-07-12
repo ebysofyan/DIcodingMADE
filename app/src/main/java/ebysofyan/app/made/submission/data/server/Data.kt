@@ -22,27 +22,27 @@ data class BaseResponse<T : Parcelable>(
 @Parcelize
 data class Movie(
     val id: Long,
-    val adult: Boolean,
+    val adult: Boolean = false,
     @SerializedName("backdrop_path")
     val backdropPath: String,
     @SerializedName("genre_ids")
-    val genreIds: MutableList<Int>,
+    val genreIds: MutableList<Int> = mutableListOf(),
     @SerializedName("original_language")
-    val originalLanguage: String,
+    val originalLanguage: String = "",
     @SerializedName("original_title")
-    val originalTitle: String,
+    val originalTitle: String = "",
     val overview: String,
-    val popularity: Double,
+    val popularity: Double = 0.0,
     @SerializedName("poster_path")
     val posterPath: String,
     @SerializedName("release_date")
     val releaseDate: String,
     val title: String,
-    val video: Boolean,
+    val video: Boolean = false,
     @SerializedName("vote_average")
     val voteAverage: Double,
     @SerializedName("vote_count")
-    val voteCount: Int
+    val voteCount: Int = 0
 ) : Parcelable
 
 
@@ -55,23 +55,22 @@ data class TvShow(
     @SerializedName("first_air_date")
     val firstAirDate: String,
     @SerializedName("genre_ids")
-    val genreIds: MutableList<Int>,
+    val genreIds: MutableList<Int> = mutableListOf(),
     @SerializedName("origin_country")
-    val originCountry: MutableList<String>,
+    val originCountry: MutableList<String> = mutableListOf(),
     @SerializedName("original_language")
-    val originalLanguage: String,
+    val originalLanguage: String = "",
     @SerializedName("original_name")
-    val originalName: String,
+    val originalName: String = "",
     val overview: String,
-    val popularity: Double,
+    val popularity: Double = 0.0,
     @SerializedName("poster_path")
     val posterPath: String,
     @SerializedName("vote_average")
     val voteAverage: Double,
     @SerializedName("vote_count")
-    val voteCount: Int
+    val voteCount: Int = 0
 ) : Parcelable
-
 
 
 data class MovieError(

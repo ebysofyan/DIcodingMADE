@@ -1,5 +1,6 @@
 package ebysofyan.app.made.submission.repository.services
 
+import com.google.gson.JsonElement
 import ebysofyan.app.made.submission.common.utils.Constants
 import ebysofyan.app.made.submission.data.server.BaseResponse
 import ebysofyan.app.made.submission.data.server.Movie
@@ -24,4 +25,10 @@ interface MovieService {
         @Query("api_key") apiKey: String = Constants.API_KEY,
         @QueryMap queryMap: HashMap<String, String>
     ): Call<BaseResponse<TvShow>>
+
+    @GET("/3/search/multi")
+    fun searchMulti(
+        @Query("api_key") apiKey: String = Constants.API_KEY,
+        @QueryMap queryMap: HashMap<String, String>
+    ): Call<JsonElement>
 }

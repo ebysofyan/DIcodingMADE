@@ -1,5 +1,6 @@
 package ebysofyan.app.made.submission.repository
 
+import com.google.gson.JsonElement
 import ebysofyan.app.made.submission.base.BaseRetrofitCallback
 import ebysofyan.app.made.submission.common.utils.ErrorBodyParser
 import ebysofyan.app.made.submission.common.utils.NetworkConfig
@@ -52,6 +53,31 @@ class MovieRepository {
             }
 
             override fun onResponse(call: Call<BaseResponse<TvShow>>, response: Response<BaseResponse<TvShow>>) {
+                when {
+                    response.isSuccessful -> callback.onResponseSuccess(response.body())
+                    else -> callback.onResponseError(
+                        response.code(),
+                        ErrorBodyParser.parse(response.errorBody(), MovieError::class.java)
+                    )
+                }
+            }
+
+        })
+
+        return service
+    }
+
+    fun searchMulti(
+        queryMap: HashMap<String, String> = hashMapOf(),
+        callback: BaseRetrofitCallback<JsonElement>
+    ): Call<JsonElement> {
+        val service = NetworkConfig.client.create(MovieService::class.java).searchMulti(queryMap = queryMap)
+        service.enqueue(object : Callback<JsonElement> {
+            override fun onFailure(call: Call<JsonElement>, t: Throwable) {
+                callback.onFailure(t)
+            }
+
+            override fun onResponse(call: Call<JsonElement>, response: Response<JsonElement>) {
                 when {
                     response.isSuccessful -> callback.onResponseSuccess(response.body())
                     else -> callback.onResponseError(

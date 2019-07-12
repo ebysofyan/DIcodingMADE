@@ -10,6 +10,7 @@ import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import androidx.navigation.ui.setupWithNavController
 import ebysofyan.app.made.submission.R
+import ebysofyan.app.made.submission.views.search.MovieSearchActivity
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.toolbar.*
 
@@ -48,9 +49,16 @@ class MainActivity : AppCompatActivity() {
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        if (item.itemId == R.id.menu_item_language) {
-            startActivityForResult(Intent(ACTION_LOCALE_SETTINGS), LOCALE_SETTINGS_CODE)
+        return when (item.itemId) {
+            R.id.menu_item_language -> {
+                startActivityForResult(Intent(ACTION_LOCALE_SETTINGS), LOCALE_SETTINGS_CODE)
+                true
+            }
+            R.id.menu_item_search -> {
+                startActivity(Intent(this, MovieSearchActivity::class.java))
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
         }
-        return super.onOptionsItemSelected(item)
     }
 }
