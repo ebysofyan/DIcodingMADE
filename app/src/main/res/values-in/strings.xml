@@ -7,6 +7,9 @@
     <string name="tab_tv_show_title">Acara TV</string>
     <string name="tab_favorite_title">Favorit</string>
 
+    <string name="appwidget_text">Widget Favorit</string>
+    <string name="empty_text_widget">Tidak ada favorit</string>
+
     <string name="add_to_favorite_message">Berhasil ditambahkan ke favorit</string>
     <string name="delete_from_favorite_message">Berhasil dihapus dari favorit</string>
 </resources>

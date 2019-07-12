@@ -15,6 +15,9 @@ object FavoriteDao {
         return@let it.count() > 0
     } ?: false
 
+    fun getAllFavorite(): MutableList<Favorite>? =
+        favoriteStore?.query()?.build()?.find()
+
     fun getAllFavorite(type: String): MutableList<Favorite>? =
         favoriteStore?.query()?.equal(Favorite_.type, type)?.build()?.find()
 

@@ -1,6 +1,8 @@
 package ebysofyan.app.made.submission.views.detail
 
 import android.app.Activity
+import android.appwidget.AppWidgetManager
+import android.content.ComponentName
 import android.content.Intent
 import android.graphics.Color
 import android.os.Build
@@ -20,6 +22,7 @@ import ebysofyan.app.made.submission.dao.FavoriteDao
 import ebysofyan.app.made.submission.data.local.Favorite
 import ebysofyan.app.made.submission.data.server.Movie
 import ebysofyan.app.made.submission.data.server.TvShow
+import ebysofyan.app.made.submission.widget.FavoriteStackWidget
 import kotlinx.android.synthetic.main.activity_movie_detail.*
 import kotlinx.android.synthetic.main.toolbar.*
 
@@ -146,6 +149,7 @@ class MovieDetailActivity : AppCompatActivity() {
                 }
             }
 
+            updateWidgetDataset()
             hasChange = true
         }
     }
@@ -182,6 +186,7 @@ class MovieDetailActivity : AppCompatActivity() {
                 }
             }
 
+            updateWidgetDataset()
             hasChange = true
         }
     }
@@ -219,8 +224,17 @@ class MovieDetailActivity : AppCompatActivity() {
                 }
             }
 
+            updateWidgetDataset()
             hasChange = true
         }
+    }
+
+    private fun updateWidgetDataset() {
+        val appWidgetManager = AppWidgetManager.getInstance(this)
+        val appWidgetIds = appWidgetManager.getAppWidgetIds(
+            ComponentName(this, FavoriteStackWidget::class.java)
+        )
+        appWidgetManager.notifyAppWidgetViewDataChanged(appWidgetIds, R.id.widget_stack_view)
     }
 
     override fun onBackPressed() {
