@@ -1,0 +1,8 @@
+<resources>
+    <string name="default_font" translatable="false">sans-serif-light</string>
+
+    <string name="app_name">MADE Favorite App</string>
+    <string name="movie_image_content_desc">Image Content Description</string>
+    <string name="tab_movies_title">Movies</string>
+    <string name="tab_tv_show_title">Tv Show</string>
+</resources>
