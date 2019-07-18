@@ -195,7 +195,7 @@ class MovieDetailActivity : AppCompatActivity() {
         movie_detail_header.loadWithGlidePlaceholder(Constants.getImageUrl("w780", fav.backdropPath))
         movie_detail_poster.loadWithGlidePlaceholder(Constants.getImageUrl(fileName = fav.posterPath))
 
-        movie_detail_title.text = fav.releaseDate
+        movie_detail_title.text = fav.title
         movie_detail_rating.text = fav.voteAverage.toString()
         movie_detail_release_date.text = fav.releaseDate.toDateFormat()
         movie_detail_desc.text = fav.overview

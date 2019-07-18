@@ -4,6 +4,11 @@ import ebysofyan.app.made.submission.BuildConfig
 
 object Constants {
 
+    const val NOTIFICATION_DATA = "NOTIFICATION_DATA"
+    val ALARM_MESSAGE_TITLE = "ALARM_MESSAGE_TITLE"
+    val ALARM_MESSAGE_BODY = "ALARM_MESSAGE_BODY"
+    const val EXTRA_MESSAGE = "EXTRA_MESSAGE"
+    const val EXTRA_TYPE = "EXTRA_TYPE"
     const val SEARCH_LOADING = "SEARCH_LOADING"
     const val SEARCH_DATA_SET = "SEARCH_DATA_SET"
     const val MOVIE_QUERY = "MOVIE_QUERY"

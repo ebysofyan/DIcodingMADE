@@ -1,4 +1,4 @@
-package ebysofyan.app.made.submission.provider
+package ebysofyan.app.made.submission.services.provider
 
 import android.net.Uri
 
@@ -16,7 +16,7 @@ object ProviderContract {
             "type"
         )
 
-    val AUTHORITY = "ebysofyan.app.made.submission.provider"
+    val AUTHORITY = "ebysofyan.app.made.submission.services.provider"
     val CONTENT_PATH = "favorite"
     val CONTENT_URI = Uri.parse("content://$AUTHORITY/$CONTENT_PATH")
     val ALL_ITEMS = -2

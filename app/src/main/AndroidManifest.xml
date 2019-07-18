@@ -4,8 +4,14 @@
           package="ebysofyan.app.made.submission">
 
     <uses-permission android:name="android.permission.INTERNET"/>
-    <permission android:name="ebysofyan.app.made.submission.provider.READ_DATABASE" android:protectionLevel="normal"/>
-    <permission android:name="ebysofyan.app.made.submission.provider.WRITE_DATABASE" android:protectionLevel="normal"/>
+    <uses-permission android:name="android.permission.SET_ALARM"/>
+
+    <permission
+            android:name="ebysofyan.app.made.submission.services.provider.READ_DATABASE"
+            android:protectionLevel="normal"/>
+    <permission
+            android:name="ebysofyan.app.made.submission.services.provider.WRITE_DATABASE"
+            android:protectionLevel="normal"/>
 
     <application
             android:name=".App"
@@ -17,6 +23,8 @@
             android:theme="@style/AppTheme"
             android:usesCleartextTraffic="false"
             tools:ignore="GoogleAppIndexingWarning">
+
+
         <receiver android:name=".widget.FavoriteStackWidget">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE"/>
@@ -34,10 +42,11 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
+        <activity android:name=".views.detail.MovieDetailActivity"/>
+        <activity android:name=".views.search.MovieSearchActivity"/>
+
         <activity
-                android:name=".views.detail.MovieDetailActivity"/>
-        <activity
-                android:name=".views.search.MovieSearchActivity"/>
+                android:name=".views.settings.SettingsActivity"/>
 
         <receiver android:name=".widget.FavoriteStackWidget">
             <intent-filter>
@@ -49,14 +58,24 @@
                     android:resource="@xml/favorite_widget_info"/>
         </receiver>
 
+        <receiver
+                android:name=".services.receiver.ReleaseTodayAlarmReceiver"
+                android:enabled="true"
+                android:exported="true"/>
+
+        <receiver
+                android:name=".services.receiver.ReleaseTodayAlarmReceiver"
+                android:enabled="true"
+                android:exported="true"/>
+
         <service
                 android:name=".widget.FavoriteStackWidgetService"
                 android:permission="android.permission.BIND_REMOTEVIEWS"/>
 
         <provider
-                android:name=".provider.FavoriteContentProvider"
-                android:authorities="ebysofyan.app.made.submission.provider"
-                android:exported="false"
+                android:name="ebysofyan.app.made.submission.services.provider.FavoriteContentProvider"
+                android:authorities="ebysofyan.app.made.submission.services.provider"
+                android:exported="true"
                 android:grantUriPermissions="true"
                 android:readPermission="ebysofyan.app.made.submission.provider.READ_DATABASE"
                 android:writePermission="ebysofyan.app.made.submission.provider.WRITE_DATABASE"/>

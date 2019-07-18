@@ -2,7 +2,7 @@
 
     <string name="default_font" translatable="false">sans-serif-light</string>
 
-    <string name="app_name">MadeSubmission</string>
+    <string name="app_name" translatable="false">Dicoding MADE Sub5</string>
     <string name="movie_image_content_desc">Movie Poster</string>
     <string name="menu_language">Change Language</string>
     <string name="no_trailer_found">No trailer found</string>
@@ -17,4 +17,14 @@
     <string name="empty_text_widget">No Favorite</string>
     <string name="search_hint_text">Find movie and tv show . . .</string>
 
+    <string name="daily_reminder" translatable="false">daily_reminder</string>
+    <string name="daily_reminder_title">Daily Reminder Notification</string>
+
+    <string name="release_today" translatable="false">release_today</string>
+    <string name="release_today_title">Release Today Notification</string>
+
+    <string name="settings">Settings</string>
+    <string name="daily_reminder_msg_title">New movie has coming</string>
+    <string name="daily_reminder_msg_body">Hey dude, there are several new movie has coming</string>
+    <string name="NEW">New</string>
 </resources>

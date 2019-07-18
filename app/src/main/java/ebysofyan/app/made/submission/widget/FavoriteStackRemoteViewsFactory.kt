@@ -13,7 +13,7 @@ import ebysofyan.app.made.submission.common.extensions.toDateFormat
 import ebysofyan.app.made.submission.common.utils.Constants
 import ebysofyan.app.made.submission.common.utils.CursorUtil
 import ebysofyan.app.made.submission.data.local.Favorite
-import ebysofyan.app.made.submission.provider.ProviderContract
+import ebysofyan.app.made.submission.services.provider.ProviderContract
 
 
 /**

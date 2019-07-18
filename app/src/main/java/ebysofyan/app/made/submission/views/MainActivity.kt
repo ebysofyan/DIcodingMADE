@@ -1,7 +1,9 @@
 package ebysofyan.app.made.submission.views
 
 import android.content.Intent
+import android.content.SharedPreferences
 import android.os.Bundle
+import android.preference.PreferenceManager
 import android.provider.Settings.ACTION_LOCALE_SETTINGS
 import android.view.Menu
 import android.view.MenuItem
@@ -11,6 +13,7 @@ import androidx.navigation.findNavController
 import androidx.navigation.ui.setupWithNavController
 import ebysofyan.app.made.submission.R
 import ebysofyan.app.made.submission.views.search.MovieSearchActivity
+import ebysofyan.app.made.submission.views.settings.SettingsActivity
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.toolbar.*
 
@@ -32,16 +35,17 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        init()
+        initActionBar()
     }
 
-    private fun init() {
+    private fun initActionBar() {
         setSupportActionBar(_toolbar)
 
         navController = findNavController(R.id.main_fragment)
         main_bottom_navigation.setupWithNavController(navController)
         _toolbar.setupWithNavController(navController)
     }
+
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.main_menu, menu)
@@ -56,6 +60,10 @@ class MainActivity : AppCompatActivity() {
             }
             R.id.menu_item_search -> {
                 startActivity(Intent(this, MovieSearchActivity::class.java))
+                true
+            }
+            R.id.menu_item_settings -> {
+                startActivity(Intent(this, SettingsActivity::class.java))
                 true
             }
             else -> super.onOptionsItemSelected(item)

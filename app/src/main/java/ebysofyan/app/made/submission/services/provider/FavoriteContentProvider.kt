@@ -1,4 +1,4 @@
-package ebysofyan.app.made.submission.provider
+package ebysofyan.app.made.submission.services.provider
 
 import android.content.ContentProvider
 import android.content.ContentValues

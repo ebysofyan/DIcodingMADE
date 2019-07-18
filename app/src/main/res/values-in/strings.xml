@@ -14,4 +14,13 @@
     <string name="delete_from_favorite_message">Berhasil dihapus dari favorit</string>
 
     <string name="search_hint_text">Temukan film dan acara tv . . .</string>
+
+    <string name="daily_reminder_title">Notifikasi Pengingat Harian</string>
+    <string name="release_today_title">Notifikasi Rilis Hari Ini</string>
+
+    <string name="settings">Pengaturan</string>
+
+    <string name="daily_reminder_msg_title">Film baru telah hadir</string>
+    <string name="daily_reminder_msg_body">Hai fulan, beberapa film baru telah hadir</string>
+    <string name="NEW">Baru</string>
 </resources>

@@ -29,3 +29,11 @@ data class Favorite(
     val originalName: String = "",
     val type: String
 ) : Parcelable
+
+
+@Parcelize
+data class NotificationData(
+    val notificationId: Int = 101,
+    val title: String = "",
+    val body: String = ""
+) : Parcelable
